@@ -1,0 +1,41 @@
+{
+  "name": "tkjskanesga.github.io",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@gravity-ui/icons": "^2.18.0",
+    "@heroui/react": "^3.0.1",
+    "@heroui/styles": "^3.0.1",
+    "@tailwindcss/vite": "^4.2.2",
+    "framer-motion": "^12.38.0",
+    "lenis": "^1.3.21",
+    "motion": "^12.38.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.2",
+    "vite-tsconfig-paths": "^6.1.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.4",
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
+    "globals": "^17.4.0",
+    "vite": "^8.0.1"
+  }
+}
