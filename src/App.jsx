@@ -1,54 +1,41 @@
 import { ReactLenis } from "lenis/react";
 
+// Meta
 import Header from "./meta/Header";
 import Footer from "./meta/Footer";
+// Section
+import Hero from "./section/Hero";
+import About from "./section/About";
+import WhatWeDo from "./section/WhatWeDo";
+import Fieldwork from "./section/Fieldwork";
+import JoinTheCommunity from "./section/JoinTheCommunity";
 
 export default function App() {
   return (
     <>
       <ReactLenis
         options={{
-          lerp: 0.2,
+          lerp: 0.1,
           duration: 0.6,
           smooth: true,
           smoothTouch: false,
           wheelMultiplier: 0.9,
-          touchMultiplier: 1.7,
+          touchMultiplier: 1.2,
         }}
         root
       />
       {/* Header */}
       <Header />
       {/* Hero Section */}
-      <section data-section="hero">
-        <div className="w-full h-screen flex items-center justify-center">
-          <p>Example Hero Section</p>
-        </div>
-      </section>
+      <Hero />
       {/* About Section */}
-      <section data-section="about">
-        <div className="w-full h-screen flex items-center justify-center">
-          <p>Example About Section</p>
-        </div>
-      </section>
+      <About />
       {/* What We Do */}
-      <section data-section="what-we-do">
-        <div className="w-full h-screen flex items-center justify-center">
-          <p>Example What We Do Section</p>
-        </div>
-      </section>
+      <WhatWeDo />
       {/* The Fieldwork */}
-      <section data-section="fieldwork">
-        <div className="w-full h-screen flex items-center justify-center">
-          <p>Example Fieldwork Section</p>
-        </div>
-      </section>
+      <Fieldwork />
       {/* Join the Community */}
-      <section data-section="join-the-community">
-        <div className="w-full h-screen flex items-center justify-center">
-          <p>Example Join the Community Section</p>
-        </div>
-      </section>
+      <JoinTheCommunity />
       {/* Footer */}
       <Footer />
     </>

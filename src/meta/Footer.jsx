@@ -14,11 +14,12 @@ export default function Footer() {
   }, [])
 
   return <>
-    <footer className="w-full px-5.5">
-      <div className="w-full h-[80px] text-neutral-500 text-sm max-w-4xl mx-auto flex items-center justify-center md:justify-between">
+    <footer className="w-full px-5.5 pb-20">
+      <div className="w-full h-[80px] text-neutral-500 text-sm max-w-3xl mx-auto flex items-center justify-center md:justify-between">
         <p className="max-md:hidden">TKJ Skanesga</p>
         <p>© <span ref={timeRef}></span> TKJ Skanesga. All rights reserved.</p>
       </div>
     </footer>
+    <div className="fixed bottom-0 left-0 w-full masking-gradation-bottom-to-top h-[170px] pointer-events-none z-100"></div>
   </>
 }

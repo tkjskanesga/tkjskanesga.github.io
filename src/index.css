@@ -5,8 +5,14 @@
 
 .masking-gradation-top-to-bottom {
   mask: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), transparent);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.masking-gradation-bottom-to-top {
+  mask: linear-gradient(transparent, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 :root {
@@ -15,6 +21,14 @@
   --font-geist-mono: "Geist Mono", monospace;
   --font-instrument-serif: "Instrument Serif", serif;
   --font-jetbrains-mono: "JetBrains Mono", monospace;
+}
+
+@theme inline {
+  --font-inter-sans: var(--font-inter-sans);
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
+  --font-instrument-serif: var(--font-instrument-serif);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
 }
 
 body,
