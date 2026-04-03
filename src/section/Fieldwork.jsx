@@ -7,14 +7,14 @@ function ImageSection({ src = "", alt = "" }) {
       src={src}
       alt={alt}
       width="100%"
-      className="object-cover w-full h-full"
+      className="object-cover w-full h-full grayscale-20"
     />
   </div>
 }
 
 export default function Fieldwork() {
   return (
-    <section data-section="fieldwork" className="w-full py-30 px-4 md:px-8 max-w-7xl mx-auto select-none">
+    <section data-section="fieldwork" className="w-full py-40 px-8 max-w-7xl mx-auto select-none">
       <h2 className="text-center text-6xl mb-3 font-instrument-serif">Ready for the Industry.</h2>
       <p className="text-center mb-10 font-geist-mono tracking-tight text-neutral-600">Direct application of technical skills in a real-world work environment.</p>
       <div className="w-full md:flex gap-4">
