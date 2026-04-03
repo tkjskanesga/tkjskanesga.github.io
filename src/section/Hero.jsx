@@ -7,7 +7,7 @@ export default function Hero() {
           <video src="/profile-tkj.mp4" autoPlay loop muted className="w-full h-full object-cover" />
         </div>
         <div className="max-md:absolute w-full md:w-[calc(100%-280px)] px-9 md:px-3 max-md:text-white">
-          <h1 className="text-6xl mb-3 font-instrument-serif">Connecting the World, Engineering the Future.</h1>
+          <h1 className="text-4xl md:text-6xl mb-3 font-instrument-serif">Connecting the World, Engineering the Future.</h1>
           <p className="text-neutral-600 max-md:text-neutral-300 font-geist-mono tracking-tight">A glimpse into the world of Telecommunication and Computer Networks, where students master the skills to build, secure, and optimize the digital infrastructure that powers our modern lives.</p>
         </div>
       </div>
