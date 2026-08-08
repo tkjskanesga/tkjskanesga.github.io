@@ -1,4 +1,5 @@
 import { Briefcase, AntennaSignal, Bulb, Cube, Database, ArrowUpRightFromSquare } from "@gravity-ui/icons"
+import Reveal, { StaggerContainer, StaggerItem } from "../components/Reveal"
 
 const listLearning = [
   {
@@ -36,24 +37,30 @@ const listLearning = [
 export default function WhatWeDo() {
   return (
     <section data-section="what-we-do" className="w-full py-40 px-8 max-w-7xl mx-auto select-none">
-      <h2 className="text-center text-6xl mb-3 font-instrument-serif">What have we learned?.</h2>
-      <p className="text-center font-geist-mono tracking-tight text-neutral-600">We are exploring the key factors that will support the industry.</p>
-      <div className="w-full mt-20">
+      <Reveal preset="fadeUp">
+        <h2 className="text-center text-6xl mb-3 font-instrument-serif">What have we learned?.</h2>
+      </Reveal>
+      <Reveal preset="fadeUp" delay={0.1}>
+        <p className="text-center font-space-grotesk tracking-tight text-neutral-600">We are exploring the key factors that will support the industry.</p>
+      </Reveal>
+      <StaggerContainer stagger={0.12} className="w-full mt-20">
         {listLearning.map((items, key) => (
-          <div className="w-full md:flex items-start py-4" key={key}>
-            <div className="w-full md:w-[435px] font-geist-mono tracking-tight">
-              <div className="w-full flex items-start">
-                <span className="mt-1.5">{items.icon}</span>
-                <h3 className="ml-3 text-lg font-semibold">{items.head}</h3>
+          <StaggerItem key={key} className="w-full">
+            <div className="w-full md:flex items-start py-4">
+              <div className="w-full md:w-[435px] font-space-grotesk tracking-tight">
+                <div className="w-full flex items-start">
+                  <span className="mt-1.5">{items.icon}</span>
+                  <h3 className="ml-3 text-lg font-semibold">{items.head}</h3>
+                </div>
+                <p className="text-sm text-neutral-600">{items.title}</p>
               </div>
-              <p className="text-sm text-neutral-600">{items.title}</p>
+              <div className="w-full md:w-[calc(100%-435px)] max-md:mt-3">
+                <p>{items.mean}</p>
+              </div>
             </div>
-            <div className="w-full md:w-[calc(100%-435px)] max-md:mt-3">
-              <p>{items.mean}</p>
-            </div>
-          </div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </section>
   );
 }

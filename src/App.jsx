@@ -1,4 +1,5 @@
 import { ReactLenis } from "lenis/react";
+import { ScrollProvider } from "./components/ScrollProvider";
 
 // Meta
 import Header from "./meta/Header";
@@ -12,14 +13,14 @@ import JoinTheCommunity from "./section/JoinTheCommunity";
 
 export default function App() {
   return (
-    <>
+    <ScrollProvider>
       <ReactLenis
         options={{
           lerp: 0.1,
-          duration: 0.6,
+          duration: 1,
           smooth: true,
           smoothTouch: false,
-          wheelMultiplier: 0.9,
+          wheelMultiplier: 1.2,
           touchMultiplier: 1.2,
         }}
         root
@@ -38,6 +39,6 @@ export default function App() {
       <JoinTheCommunity />
       {/* Footer */}
       <Footer />
-    </>
+    </ScrollProvider>
   );
 }

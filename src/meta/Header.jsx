@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 const linkList = [
@@ -22,6 +22,16 @@ const linkList = [
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false)
+  const [switchToKawaiLogo, setSwitchToKawaiLogo] = useState(false)
+
+  useEffect(() => {
+    const getParams = new URLSearchParams(location.search)
+    const getKawaiTrigger = !!(getParams.get("kawai"))
+
+    if (getKawaiTrigger) {
+      setSwitchToKawaiLogo(true)
+    }
+  }, [])
 
   function GetScrollSection(e) {
     const target = e.target.getAttribute("data-action")
@@ -45,17 +55,24 @@ export default function Header() {
         className="w-full max-w-3xl flex flex-wrap items-start justify-between bg-neutral-900 rounded-3xl text-white overflow-hidden"
       >
         <div data-action="hero" onClick={GetScrollSection} className="w-[calc(100%-62px)] h-[46px] md:w-[200px] flex items-center justify-start px-3.5 cursor-pointer">
-          <img
-            src="https://github.com/tkjskanesga.png"
-            alt="Logo"
-            width={34}
-            height={34}
-            className="w-[34px] h-[34px] object-contain pointer-events-none"
-          />
-          <b className="font-bold ml-2 pointer-events-none">TKJ Skanesga</b>
+          {switchToKawaiLogo? <div className="px-2 py-2 h-[46px] pointer-events-none">
+            <img
+              src="/icon/kawai-logo-ff66a842.svg"
+              className="w-full h-full pointer-events-none"
+            />
+          </div>:<div className="flex items-center pointer-events-none">
+            <img
+              src="https://github.com/tkjskanesga.png"
+              alt="Logo"
+              width={34}
+              height={34}
+              className="w-[34px] h-[34px] object-contain pointer-events-none"
+            />
+            <b className="font-bold ml-2 pointer-events-none">TKJ Skanesga</b>
+          </div>}
         </div>
         <div className="md:hidden w-[62px] h-[46px] flex items-center justify-center p-1 pr-2">
-          <button onClick={() => setNavOpen(!navOpen)} className="w-[36px] h-[36px] flex items-center justify-center p-2">
+          <button onClick={() => setNavOpen(!navOpen)} className="w-[36px] h-[36px] flex items-center justify-center p-2 cursor-pointer">
             <div className="w-full h-[14px] flex flex-col items-center justify-between relative">
               <motion.span 
                 animate={{ rotate: navOpen ? 45 : 0, top: navOpen ? 6 : 0 }} 
