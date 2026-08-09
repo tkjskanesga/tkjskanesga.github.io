@@ -13,7 +13,7 @@ export default defineConfig({
     createHtmlPlugin({
       minify: {
         collapseWhitespace: true,
-        removeComments: true,
+        removeComments: false,
         removeRedundantAttributes: true,
         useShortDoctype: true,
         removeEmptyAttributes: true,
