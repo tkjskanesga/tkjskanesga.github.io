@@ -1,0 +1,17 @@
+# TKJ Skanesga - Telecommunication & Computer Networks
+
+Official website of the TKJ (Telecommunication and Computer Networks) department at SMKN 1 Seyegan, Indonesia. A vocational school program specializing in fiber optics, MikroTik networking, server virtualization, VoIP systems, and digital entrepreneurship.
+
+## Programs
+
+- [Digital Entrepreneurship](https://tkjskanesga.github.io/) - Web development and digital solutions from architecture to deployment
+- [Wide Area Network](https://tkjskanesga.github.io/) - Wireless technologies, VoIP, Point-to-Point links, and Fiber Optic installation
+- [Network Infrastructure Administration](https://tkjskanesga.github.io/) - MikroTik enterprise solutions and MTCNA standards
+- [Network Systems Administration](https://tkjskanesga.github.io/) - Server environments using Debian and Proxmox virtualization
+- [Advanced Network Engineering](https://tkjskanesga.github.io/) - Enterprise-grade network design and optimization
+
+## Links
+
+- [Instagram](https://instagram.com/tkj.skanesga.official) - Official social media
+- [GitHub](https://github.com/tkjskanesga) - Open source projects and documentation
+- [Documentation](https://tkjskanesga.mintlify.site) - Technical documentation

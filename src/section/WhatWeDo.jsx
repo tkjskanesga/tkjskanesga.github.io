@@ -1,47 +1,75 @@
-import { Briefcase, AntennaSignal, Bulb, Cube, Database, ArrowUpRightFromSquare } from "@gravity-ui/icons"
-import Reveal, { StaggerContainer, StaggerItem } from "../components/Reveal"
+import {
+  Briefcase,
+  AntennaSignal,
+  Bulb,
+  Cube,
+  Database,
+  ArrowUpRightFromSquare,
+} from "@gravity-ui/icons";
+import Reveal, { StaggerContainer, StaggerItem } from "../components/Reveal";
 
 const listLearning = [
   {
     icon: <Briefcase />,
     head: "Digital Entrepreneurship",
     title: "Kewirausahaan",
-    mean: "Cultivating a tech-driven mindset, focusing on the end-to-end process of web development and digital solutions—from initial architecture to high-value market deployment."
+    mean: "Cultivating a tech-driven mindset, focusing on the end-to-end process of web development and digital solutions—from initial architecture to high-value market deployment.",
   },
   {
     icon: <AntennaSignal />,
     head: "Wide Area Network",
     title: "Jaringan Berbasis Luas",
-    mean: "Mastering the horizons of connectivity through advanced wireless technologies, VoIP systems, Point-to-Point links, and the intricate precision of Fiber Optic installation."
+    mean: "Mastering the horizons of connectivity through advanced wireless technologies, VoIP systems, Point-to-Point links, and the intricate precision of Fiber Optic installation.",
   },
   {
     icon: <Bulb />,
     head: "Network Infrastructure Administration",
     title: "Administrasi Infrastruktur Jaringan",
-    mean: <>Advanced specialization in MikroTik enterprise solutions, providing rigorous training in network management and foundational <a href="https://google.com/search?q=MikroTik+Certified+Network+Associate+(MTCNA)" target="_blank" className="underline hover:text-blue-800 inline-flex items-center"><ArrowUpRightFromSquare width={14} className="mr-0.5" />MTCNA</a> standards.</>
+    mean: (
+      <>
+        Advanced specialization in MikroTik enterprise solutions, providing
+        rigorous training in network management and foundational{" "}
+        <a
+          href="https://google.com/search?q=MikroTik+Certified+Network+Associate+(MTCNA)"
+          target="_blank"
+          className="underline hover:text-blue-800 inline-flex items-center"
+        >
+          <ArrowUpRightFromSquare width={14} className="mr-0.5" />
+          MTCNA
+        </a>{" "}
+        standards.
+      </>
+    ),
   },
   {
     icon: <Database />,
     head: "Network Systems Administration",
     title: "Administrasi Sistem Jaringan",
-    mean: "Orchestrating server environments using Debian and Proxmox virtualization, engineered for seamless web deployment and robust application management."
+    mean: "Orchestrating server environments using Debian and Proxmox virtualization, engineered for seamless web deployment and robust application management.",
   },
   {
     icon: <Cube />,
     head: "Advanced Network Engineering",
     title: "Jaringan Tingkat Lanjut",
-    mean: "Real-world simulations of enterprise-grade network design, encompassing cost estimation, strategic troubleshooting, and long-term optimization for sustainable infrastructure."
+    mean: "Real-world simulations of enterprise-grade network design, encompassing cost estimation, strategic troubleshooting, and long-term optimization for sustainable infrastructure.",
   },
-]
+];
 
 export default function WhatWeDo() {
   return (
-    <section data-section="what-we-do" className="w-full py-40 px-8 max-w-7xl mx-auto select-none">
+    <section
+      data-section="what-we-do"
+      className="w-full py-40 px-8 max-w-7xl mx-auto select-none"
+    >
       <Reveal preset="fadeUp">
-        <h2 className="text-center text-6xl mb-3 font-instrument-serif">What have we learned?.</h2>
+        <h2 className="text-center text-6xl mb-3 font-instrument-serif">
+          What have we learned?.
+        </h2>
       </Reveal>
       <Reveal preset="fadeUp" delay={0.1}>
-        <p className="text-center font-space-grotesk tracking-tight text-neutral-600">We are exploring the key factors that will support the industry.</p>
+        <p className="text-center font-space-grotesk tracking-tight text-neutral-600">
+          We are exploring the key factors that will support the industry.
+        </p>
       </Reveal>
       <StaggerContainer stagger={0.12} className="w-full mt-20">
         {listLearning.map((items, key) => (

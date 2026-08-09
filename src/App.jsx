@@ -1,15 +1,22 @@
+import { lazy, Suspense } from "react";
 import { ReactLenis } from "lenis/react";
 import { ScrollProvider } from "./components/ScrollProvider";
 
 // Meta
 import Header from "./meta/Header";
-import Footer from "./meta/Footer";
 // Section
 import Hero from "./section/Hero";
-import About from "./section/About";
-import WhatWeDo from "./section/WhatWeDo";
-import Fieldwork from "./section/Fieldwork";
-import JoinTheCommunity from "./section/JoinTheCommunity";
+
+// Lazy load below-the-fold sections
+const About = lazy(() => import("./section/About"));
+const WhatWeDo = lazy(() => import("./section/WhatWeDo"));
+const Fieldwork = lazy(() => import("./section/Fieldwork"));
+const JoinTheCommunity = lazy(() => import("./section/JoinTheCommunity"));
+const Footer = lazy(() => import("./meta/Footer"));
+
+function SectionFallback() {
+  return <div className="w-full py-40" />;
+}
 
 export default function App() {
   return (
@@ -29,16 +36,14 @@ export default function App() {
       <Header />
       {/* Hero Section */}
       <Hero />
-      {/* About Section */}
-      <About />
-      {/* What We Do */}
-      <WhatWeDo />
-      {/* The Fieldwork */}
-      <Fieldwork />
-      {/* Join the Community */}
-      <JoinTheCommunity />
-      {/* Footer */}
-      <Footer />
+      {/* Below-the-fold sections - lazy loaded */}
+      <Suspense fallback={<SectionFallback />}>
+        <About />
+        <WhatWeDo />
+        <Fieldwork />
+        <JoinTheCommunity />
+        <Footer />
+      </Suspense>
     </ScrollProvider>
   );
 }

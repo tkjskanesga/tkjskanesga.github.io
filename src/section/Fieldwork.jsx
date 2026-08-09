@@ -1,6 +1,12 @@
-import { useState, useRef, useEffect } from "react"
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion"
-import Reveal, { StaggerContainer, StaggerItem } from "../components/Reveal"
+import { useState, useRef, useEffect } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "framer-motion";
+import Reveal, { StaggerContainer, StaggerItem } from "../components/Reveal";
 
 function ImageSection({ src = "", alt = "", onClick }) {
   return (
@@ -12,9 +18,12 @@ function ImageSection({ src = "", alt = "", onClick }) {
         onClick={onClick}
       >
         <div className="absolute w-full h-full z-10 p-5 font-space-grotesk tracking-tight ">
-          <span className="inline-block bg-neutral-200/80 text-sm p-1.5 px-3 rounded-md">{alt}</span>
+          <span className="inline-block bg-neutral-200/80 text-sm p-1.5 px-3 rounded-md">
+            {alt}
+          </span>
         </div>
         <img
+          loading="lazy"
           src={src}
           alt={alt}
           width="100%"
@@ -22,11 +31,13 @@ function ImageSection({ src = "", alt = "", onClick }) {
         />
       </motion.div>
     </StaggerItem>
-  )
+  );
 }
 
 function MobileCarousel({ images, onItemClick }) {
-  const [cards, setCards] = useState(() => images.map((img, i) => ({ ...img, id: i })));
+  const [cards, setCards] = useState(() =>
+    images.map((img, i) => ({ ...img, id: i })),
+  );
   const [isDragging, setIsDragging] = useState(false);
   const dragX = useMotionValue(0);
   const dragY = useMotionValue(0);
@@ -39,7 +50,10 @@ function MobileCarousel({ images, onItemClick }) {
     setIsDragging(true);
     const maxTilt = 15;
     const maxY = 25;
-    const rotation = Math.max(-maxTilt, Math.min(maxTilt, info.offset.x * 0.08));
+    const rotation = Math.max(
+      -maxTilt,
+      Math.min(maxTilt, info.offset.x * 0.08),
+    );
     const yMove = Math.max(-maxY, Math.min(maxY, info.offset.y * 0.3));
     dragX.set(rotation);
     dragY.set(yMove);
@@ -90,7 +104,9 @@ function MobileCarousel({ images, onItemClick }) {
               dragElastic={0.4}
               onDragStart={isTop ? handleDragStart : undefined}
               onDrag={isTop ? handleDrag : undefined}
-              onDragEnd={isTop ? (e, info) => handleDragEnd(e, info, card.id) : undefined}
+              onDragEnd={
+                isTop ? (e, info) => handleDragEnd(e, info, card.id) : undefined
+              }
               animate={{
                 x: xOffset,
                 scale,
@@ -113,11 +129,14 @@ function MobileCarousel({ images, onItemClick }) {
               onClick={() => isTop && handleClick(card)}
             >
               <div className="absolute w-full h-full z-10 p-4 font-space-grotesk tracking-tight">
-                <span className="inline-block bg-neutral-200/80 text-sm p-1.5 px-3 rounded-md">{card.alt}</span>
+                <span className="inline-block bg-neutral-200/80 text-sm p-1.5 px-3 rounded-md">
+                  {card.alt}
+                </span>
               </div>
               <img
                 src={card.src}
                 alt={card.alt}
+                loading="lazy"
                 className="w-full h-full object-cover grayscale-20"
                 draggable={false}
               />
@@ -125,7 +144,7 @@ function MobileCarousel({ images, onItemClick }) {
           );
         })}
       </div>
-      <p className="mt-6 text-sm text-neutral-500 font-space-grotesk tracking-tight select-none text-center">
+      <p className="mt-6 text-sm text-neutral-800 font-space-grotesk tracking-tight select-none text-center">
         Swipe left or right to see more, click to view full size
       </p>
     </div>
@@ -139,8 +158,10 @@ function Lightbox({ src, alt, onClose }) {
   useEffect(() => {
     if (!imgRef.current) return;
     const img = imgRef.current;
+    let cancelled = false;
 
     function onImgLoad() {
+      if (cancelled) return;
       const vw = window.innerWidth;
       const vh = window.innerHeight;
       const padding = vw < 768 ? 32 : 80;
@@ -159,14 +180,21 @@ function Lightbox({ src, alt, onClose }) {
         h = maxH;
       }
 
-      setDimensions({ width: w, height: h });
+      requestAnimationFrame(() => {
+        if (!cancelled) {
+          setDimensions({ width: w, height: h });
+        }
+      });
     }
 
     if (img.complete) {
       onImgLoad();
     } else {
       img.addEventListener("load", onImgLoad);
-      return () => img.removeEventListener("load", onImgLoad);
+      return () => {
+        cancelled = true;
+        img.removeEventListener("load", onImgLoad);
+      };
     }
   }, [src]);
 
@@ -193,6 +221,7 @@ function Lightbox({ src, alt, onClose }) {
           onClick={(e) => e.stopPropagation()}
         >
           <img
+            loading="lazy"
             ref={imgRef}
             src={src}
             alt={alt}
@@ -210,33 +239,62 @@ function Lightbox({ src, alt, onClose }) {
         </motion.div>
       </motion.div>
     </AnimatePresence>
-  )
+  );
 }
 
 const images = [
-  { src: "/working-documentation/pict1-371218cb.jpg", alt: "CCTV Installation" },
-  { src: "/working-documentation/pict2-c5e7ac27.jpg", alt: "Fiber Optic Installation" },
-  { src: "/working-documentation/pict3-bf45e279.jpg", alt: "Network Infrastructure" },
-  { src: "/working-documentation/pict4-4d0933df.jpg", alt: "Configuration Mikrotik" },
-  { src: "/working-documentation/pict5-e7cc5603.jpg", alt: "Point-to-Point Training" },
-  { src: "/working-documentation/pict6-551dbe1b.jpg", alt: "Configuration VoIP" },
-]
+  {
+    src: "/working-documentation/pict1-371218cb.webp",
+    alt: "CCTV Installation",
+  },
+  {
+    src: "/working-documentation/pict2-c5e7ac27.webp",
+    alt: "Fiber Optic Installation",
+  },
+  {
+    src: "/working-documentation/pict3-bf45e279.webp",
+    alt: "Network Infrastructure",
+  },
+  {
+    src: "/working-documentation/pict4-4d0933df.webp",
+    alt: "Configuration Mikrotik",
+  },
+  {
+    src: "/working-documentation/pict5-e7cc5603.webp",
+    alt: "Point-to-Point Training",
+  },
+  {
+    src: "/working-documentation/pict6-551dbe1b.webp",
+    alt: "Configuration VoIP",
+  },
+];
 
 export default function Fieldwork() {
   const [lightbox, setLightbox] = useState(null);
 
   return (
-    <section data-section="fieldwork" className="w-full py-40 px-8 max-w-7xl mx-auto select-none">
+    <section
+      data-section="fieldwork"
+      className="w-full py-40 px-8 max-w-7xl mx-auto select-none"
+    >
       <Reveal preset="fadeUp">
-        <h2 className="text-center text-6xl mb-3 font-instrument-serif">Ready for the Industry.</h2>
+        <h2 className="text-center text-6xl mb-3 font-instrument-serif">
+          Ready for the Industry.
+        </h2>
       </Reveal>
       <Reveal preset="fadeUp" delay={0.1}>
-        <p className="text-center mb-10 font-space-grotesk tracking-tight text-neutral-600">Direct application of technical skills in a real-world work environment.</p>
+        <p className="text-center mb-10 font-space-grotesk tracking-tight text-neutral-600">
+          Direct application of technical skills in a real-world work
+          environment.
+        </p>
       </Reveal>
 
       {/* Mobile: Swipeable Carousel */}
       <div className="md:hidden">
-        <MobileCarousel images={images} onItemClick={(img) => setLightbox(img)} />
+        <MobileCarousel
+          images={images}
+          onItemClick={(img) => setLightbox(img)}
+        />
       </div>
 
       {/* Desktop/Tablet: Bento Grid */}
