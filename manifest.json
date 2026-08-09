@@ -1,0 +1,16 @@
+{
+  "name": "TKJ Skanesga - Telecommunication & Computer Networks",
+  "short_name": "TKJ Skanesga",
+  "description": "Official website of TKJ (Telecommunication and Computer Networks) department at SMKN 1 Seyegan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/icon/manifest-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
