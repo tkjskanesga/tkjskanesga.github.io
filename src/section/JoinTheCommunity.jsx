@@ -22,7 +22,7 @@ export default function JoinTheCommunity() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://instagram.com/tkj.skanesga.official/"
+                href="https://instagram.com/tkj.skanesga.official"
                 target="_blank"
                 className="text-xl flex items-center gap-1"
               >
